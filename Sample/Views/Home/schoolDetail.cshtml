@@ -1,0 +1,452 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bridge the gap </title>
+    <link href="@Url.Content("~/Content/animate.min.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    @Scripts.Render("~/Scripts/index_angular.js"))
+
+
+
+
+   
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
+
+    <!-- Template js -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-app="school" ng-controller="detail_controller">
+
+    <!-- Start Logo Section -->
+    <section id="logo-section" class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo text-center">
+                        <h1>Bridge the gap</h1>
+                        <span>Connect the dots</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Logo Section -->
+    <!-- Start Main Body Section -->
+    <div class="mainbody-section text-center">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                  
+                </div>
+
+                <div class="col-md-8">
+
+                    <!-- Start Carousel Section -->
+                    <div class="home-slider">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="padding-bottom: 30px;">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="images/about-03.jpg" class="img-responsive" alt="">
+                                </div>
+                                <div class="item">
+                                    <img src="images/about-02.jpg" class="img-responsive" alt="">
+                                </div>
+                                <div class="item">
+                                    <img src="images/about-01.jpg" class="img-responsive" alt="">
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Start Carousel Section -->
+
+                </div>
+
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3">
+
+                
+
+                </div>
+
+                <div class="col-md-3">
+
+                 
+
+                </div>
+
+                <div class="col-md-3">
+
+                 
+
+                </div>
+
+                <div class="col-md-3">
+
+
+                </div>
+
+            </div>
+            //
+
+
+        </div>
+
+        <div class="container-fluid" style="text-align:left;">
+
+            <!-- Page Heading -->
+            <div class=" row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        List of Schools
+                        <!--<small>Secondary Text</small>-->
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+             
+                <div class="col-md-8">
+                   <li ng-repeat="school in school_detail">
+                        <div class="row">
+
+                            <div class="col-md-12" background="grey">
+                                <h3>{{school.SchoolName}}</h3>
+                                <h4>{{school.Address}},{{school.DistrictName}}<br />{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
+                                <p>
+                                    <div class="row">
+                                        <div ng-if="school.FemaleStudentCount>0">
+                                            <div class="col-md-3">
+                                                Total no of female students: {{school.FemaleStudentCount}}
+                                            </div>
+                                        </div>
+                                        <div ng-if="school.MaleStudentCount>0">
+                                            <div class="col-md-3">
+                                                Total no of male students : {{school.MaleStudentCount}}
+                                            </div>
+                                        </div>
+                                        <div ng-if="school.MaleStudentCount == 0 && school.FemaleStudentCount == 0">
+                                            <div class="col-md-3">
+                                                Student Enrollment data not available
+                                            </div>
+                                        <div class="col-md-3">
+                                            Year of estd : {{school.YearOfEstd}}
+                                        </div>
+                                        <div class="col-md-3">
+                                            Medium of instruction: {{language_dictionary[school.MediumOfInstruction]}}
+                                        </div>
+                                    </div>
+                                    
+                                    <div ng-if="school.LibraryCount != null">
+                                        {{library_dictionary[school.LibraryCount]}}
+                                        <br />
+                                       No of books in library : {{school.BooksCount}}
+                                       No of books in library per child : {{Math.round(school.BooksCount/(school.FemaleStudentCount+school.MaleStudentCount))}}
+
+                                    </div>
+                                  
+                                    <div ng-if="school.FemaleToiletCount !=null">
+                                        <div ng-if="school.FemaleStudentCount>0">
+                                            No of female toilets: {{school.FemaleToiletCount}}
+                                            <div ng-if="school.FemaleToiletCount>0">
+                                                No. of female students per toilet  : {{Math.round(school.FemaleStudentCount/school.FemaleToiletCount)}}
+                                            </div>
+                                        </div>
+                                        <div ng-if="school.MaleStudentCount>0">
+                                            No of male toilets :{{school.MaleToiletCount}}    
+                                            <div ng-if="school.MaleToiletCount>0">
+                                                No of male students per toilet :{{Math.round(school.MaleStudentCount/school.MaleToiletCount)}}
+                                            </div>  
+                                        </div>
+                                         </div>
+                                    <div ng-if="school.MidDayMeal != null">
+                                      Mid day meals not provided
+
+
+                                    </div>
+                                    <div ng-if="school.ElectricityConnectionStatus != null">
+                                            Status of electricity connection : {{school.ElectricityConnectionStatus }}
+                                    </div>
+                                    <div ng-if="school.ClassroomCount != null">
+                                            Total no. of classrooms for instructional purposes : {{school.ClassroomCount}}
+                                            Total no of classrooms that need repair : {{school.ClassroomRepairCount}}
+                                        <div ng-if="school.studentclassroomratio >-1">
+                                            avg no. of students per classroom
+                                            {{school.studentclassroomratio}}
+
+
+                                        </div> 
+                                    </div>
+                                    <div ng-if="school.ComputerAidedLearning != null">
+                                         School provides computer aided learning : {{school.ComputerAidedLearning}}
+                                         No of computers : {{school.ComputerCount}}
+
+                                    </div>
+
+                                    <div ng-if="school.RTECurYearStudentCount != null">
+                                        No. of students given admission this year under RTE : {{school.RTECurYearStudentCount}}
+                                        No. of students given admission prev year under RTE :{{school.RTEPrevYearStudentCount}}
+                                    </div>
+
+                                  
+
+
+                                </p>
+                                <a class="btn btn-primary" href="#" ng-click="generate_pledge(school.SchoolCode)">I'd want to contribute <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                <div ng-attr-id="{{school.SchoolCode}}">
+
+                                </div>
+                                  <hr>
+                            </div>
+                        </div>
+                    </li>
+              
+                  
+                   
+                   
+                  
+                 
+                </div>
+                <!--Live Feed-->
+                <div class="col-md-4">
+                    <div class="row">
+                        <!--<img src="http://imheremovement.org/wp-content/uploads/2013/04/take-the-pledge.png" class="img-responsive" alt="">-->
+                        <img src="http://www.80g.co/wp-content/themes/twentyeleven/images/ngo%20consultancy_0.jpg" class="img-responsive" alt="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Pagination-->
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <ul class="pagination">
+                        <li>
+                            <div ng-if="no_of_pages > 5">
+                                <a href="#" ng-click="first_page()">1</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" ng-click="prev()">«</a>
+                        </li>
+                        <div ng-repeat="n in current_page_slider">
+                            <li>
+                                <a href="#" ng-click="update_page(n)"> {{n}}</a>
+                            </li>
+
+                        </div>
+
+
+
+                        <li>
+                            <a href="#" ng-click="next()">»</a>
+                        </li>
+                        <div ng-if="no_of_pages > 5">
+                            <li>
+
+                                <a href="#" ng-click="last_page()">{{no_of_pages}}</a>
+                            </li>
+                            </div>
+</ul>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+  
+    
+    <!-- Start Portfolio Section -->
+    <div class="section-modal modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="section-title text-center">
+                        <h3>Our Portfolio</h3>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/1.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/2.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/3.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/4.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/5.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/6.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/7.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/8.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/9.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/10.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/11.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <img src="images/portfolio/12.png" class="img-responsive" alt="...">
+                            <div class="portfolio-details text-center">
+                                <h4>Project Name</h4>
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /.row -->
+            </div>
+
+        </div>
+    </div>
+    <!-- End Portfolio Section -->
+   
+
+
+
+
+</body>
+
+</html>

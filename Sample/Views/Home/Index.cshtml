@@ -1,0 +1,254 @@
+﻿@section css {
+    <link href="Content/business-frontpage.css" rel="stylesheet" />
+}
+
+
+<style type="text/css">
+div.d1
+{ width:600px;
+ height:800px;
+background:url(ngo.jpg) repeat;
+ }
+ div.div2
+{ width:400px;
+ height:800px;
+ margin:10px 200px;
+ opacity:0.4;
+ filter:alpha(opacity=40);
+}
+    </style>
+@{
+    ViewBag.Title = "Home Page";
+}
+@*<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />*@
+<script src="jquery-1.11.3.min.js"></script> 
+<link href="@Url.Content("~/Content/business-frontpage.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/normalize.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/demo.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/component2.css")" rel="stylesheet" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type='text/javascript' src='./bower_components/jquery/jquery.min.js'></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script type='text/javascript' src='./bower_components/d3/d3.min.js'></script>
+<script type='text/javascript' src='scripts/d3/d3.min.js'></script>
+<script src='scripts/angular-charts/dist/angular-charts.min.js' type='text/javascript'></script>
+<script src="https://rawgit.com/chinmaymk/angular-charts/bower/dist/angular-charts.min.js" type="text/javascript"></script>
+
+<!DOCTYPE html>
+<html lang="en" ng-app="school" ng-controller="MainController">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <script src="Scripts/modernizr-2.6.2.min.js"></script>
+
+
+    <title></title>
+    <script type="text/javascript">
+        /*  var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-7243260-2']);
+          _gaq.push(['_trackPageview']);
+          (function () {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })(); */
+    </script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body bgcolor="black">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <div class="container">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="color:white" href="#">Home</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" style="color:white">
+                    <li>
+                        <a href="#" style="color:white">About</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:white">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Image Background Page Header -->
+    <!-- Note: The background image is set within the business-casual.css file. -->
+
+    <header class="business-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <center><h1 class="tagline">PLEDGE FOR PAATHSHALA</h1></center><br /><br /><br />
+                   
+                   
+                    <div class="d1">
+                        <div class="d2">
+                            <svg width="1000" height="800">
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @*<div class="container">*@
+    <div class="component">
+        <!-- Start Nav Structure -->
+
+        <button class="cn-button" id="cn-button">Facilities</button>
+        <div class="cn-wrapper" id="cn-wrapper">
+            <ul>
+                <li><a href="#" ng-click="redirect('MidDayMeal')"><span>Midday Meals</span></a></li>
+                <li><a href="#" ng-click="redirect('ElectricityData')"><span>Electricity</span></a></li>
+                <li><a href="#" ng-click="redirect('DrinkingWater')"><span> Drinking Water</span></a></li>
+                <li><a href="#" ng-click="redirect('ToiletData')"><span>Toilets</span></a></li>
+
+            </ul>
+        </div>
+        <button class="cn-button1" id="cn-button1">Resources</button>
+        <div class="cn-wrapper1" id="cn-wrapper1">
+            <ul>
+                <li><a href="#" ng-click="redirect('ClassroomData')"><span>Classrooms</span></a></li>
+                <li><a href="#" ng-click="redirect('Road')"><span>Road</span></a></li>
+                <li><a href="#" ng-click="redirect('ComputerData')"><span>Computer</span></a></li>
+                <li><a href="#" ng-click="redirect('LibraryData')"><span>Library</span></a></li>
+
+                @*<li><a href="#" ><span></span></a></li>
+                    <li><a href="#"><span>***</span></a></li>*@
+
+            </ul>
+        </div>
+        @*<button class="cn-button2" id="cn-button2">Resources</button>
+            <div class="cn-wrapper2" id="cn-wrapper2">
+                <ul>
+                    <li><a href="#"><span>Internet</span></a></li>
+                    <li><a href="#" ng-click="redirect('Computers')"><span>Computers</span></a></li>
+                    <li><a href="#" ng-click="redirect('LibraryData')"><span>Library</span></a></li>
+                    <li><a href="#"><span>***</span></a></li>
+
+                </ul>
+            </div>*@
+    </div>
+
+    <br /><br /><br /><br />
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+                <button type="button" style="height:100px; font-size:x-large" class="btn btn-default btn-lg btn-block" ng-click="redirect('RteData')">Vounteer to teach</button>
+            </div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4">
+                <button type="button" style="height:100px; font-size:x-large" class="btn btn-default btn-lg btn-block">Vacancies</button>
+            </div>
+
+        </div>
+        <footer>
+            <div class="row">
+             <!----  <div class="col-lg-12">
+                    <p style="color:white">Copyright &copy; Your Website 2014</p>
+                </div> -->
+            </div>
+            <!-- /.row -->
+        </footer>
+    </div>
+    @*</div>*@
+
+</body>
+</html>
+<script>
+
+    var s = Snap('svg');
+    var text = 'PUNJAB has the Lowest Girls enrolment at Primary Level (45.3%)';
+    var text1 = "BIHAR has the Highest Pupil-Teacher Ratio at Primary Level (57)";
+  var  text_array = ['About only 17% of 1.3 million schools have computers in school', 'About 36.6% schools have Electricity connection', '14873 primary schools in India have no classroom', 'Only 58.82% schools have a girl’s Toilet', "BIHAR has the Highest Pupil-Teacher Ratio at Primary Level (57)", 'PUNJAB has the Lowest Girls enrolment at Primary Level (45.3%)']
+  console.log(text_array);
+  var i = 0;
+    for (text_index in text_array)
+    {
+
+        console.log(text_array[text_index]);
+        text = text_array[text_index];
+        var len = text.length;
+        var array = [];
+        for (var x = 0; x < len; x++) {
+            var t = text[x]
+            array.push(t);
+
+        }
+        var txt = s.text(50, 50+i, array)
+        jQuery('tspan').attr({
+            'font-size': 25,
+            fill: 'none',
+            stroke: 'white',
+            'stroke-dasharray': 230,
+            'stroke-dashoffset': 230
+        })
+
+        jQuery('tspan').each(function (index) {
+            $(this).stop(true, true).delay(200 * index).animate({
+                'stroke-dashoffset': 0
+            }, 300);
+        })
+        i = i + 50;
+    }
+
+    console.log(array);
+    
+</script>
+
+
+
+<!-- End Main Body Section -->
+<!-- End Feature Section -->
+@Scripts.Render("~/Scripts/polyfills.js")
+@Scripts.Render("~/Scripts/modernizr-2.6.2.js")
+@Scripts.Render("~/Scripts/demo2.js")
+@Scripts.Render("~/Scripts/demo3.js")
+@Scripts.Render("~/Scripts/demo4.js")
+
+
+@Scripts.Render("~/Scripts/indexjs.js")
+
+
+@Scripts.Render("~/Scripts/index_angular.js"))
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/d3")
+
