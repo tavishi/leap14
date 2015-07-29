@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>scalejs.visualization-d3</id>
+    <version>0.1.6.3</version>
+    <title>scalejs.visualization-d3</title>
+    <authors>Dillon Uzar,  Nicholas Antonov</authors>
+    <owners>Dillon Uzar,  Nicholas Antonov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Visualization extension for scalable JavaScript application based on d3 library.</description>
+    <tags>JavaScript scalejs scalejs.visualization-d3</tags>
+  </metadata>
+</package>
