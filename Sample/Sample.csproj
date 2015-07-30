@@ -388,6 +388,7 @@
     <Content Include="Views\Home\State.cshtml" />
     <Content Include="Views\Home\get_data.cshtml" />
     <Content Include="Views\Home\schoolDetail.cshtml" />
+    <Content Include="Views\Home\pledge.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -88,7 +88,7 @@ school.service(
 
         }
 
-        function send_pledge(school_code, type) {
+        function send_pledge(school_code, type,pledge_form) {
 
             var request = $http({
                 method: "post",
@@ -98,7 +98,11 @@ school.service(
                 },
                 data: {
                     school_code: school_code,
-                    category:type
+                    category: type,
+                    organization: pledge_form.organization_name,
+                    pledge: pledge_form.pledge,
+                    comment:pledge_form.comment
+
                 }
             });
             return (request.then(handleSuccess, handleError));
@@ -127,7 +131,8 @@ school.service(
  );
 
 
-var detail_controller = function ($scope, get_schools, $rootScope, $log) {
+var detail_controller = function ($scope, get_schools, $rootScope, $log, $window) {
+    $scope.log = $log;
     $scope.school_detail = {};
     $scope.$log = $log;
     $scope.Math = window.Math;
@@ -211,20 +216,23 @@ var detail_controller = function ($scope, get_schools, $rootScope, $log) {
     }
     $scope.find_school = function (school_code) {
 
-        foreach(school in $scope.school_detail)
-        {
-            if (school.SchoolCode == school_code) {
-
-                localStorage.setItem('selected_school', school);
-                return;
-            }
-        }
+       
 
     }
     $scope.generate_pledge = function (school_code) {
         category = $scope.category;
-        $scope.find_school(school_code);
-        $window.location.href = '/Home/pledge';
+
+        for (school_no in $scope.school_detail) {
+  
+            if ($scope.school_detail[school_no].SchoolCode == school_code) {
+
+                localStorage.setItem('selected_school', JSON.stringify($scope.school_detail[school_no]));
+              //  $log.log($scope.school_detail[school_no]);
+
+            }
+        }
+      
+       $window.location.href = '/Home/pledge';
     }
     
   
@@ -243,14 +251,16 @@ var detail_controller = function ($scope, get_schools, $rootScope, $log) {
 
 
 var pledge_controller = function ($scope, $window, $log, get_schools) {
-    $scope.selected_school = localStorage.getItem('selected_school');
-    $scope.category = localStorage.getItem('type');
-    var init  =function(){
+    $scope.log = $log;
+    $scope.school = JSON.parse(localStorage.getItem('selected_school'));
    
-    }
+    $scope.category = localStorage.getItem('type');
+    $log.log($scope.school);
 $scope.pledge = function () {
     get_schools.send_pledge($scope.selected_school.SchoolCode,$scope.category,$scope.pledge_form).then(function (response) {
-
+        if (response.data == true) {
+            $window.location('/Home/schoolDetail');
+        }
     });
 
 }

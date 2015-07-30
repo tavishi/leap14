@@ -24,7 +24,7 @@
 
 
 
-   
+
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
@@ -39,219 +39,174 @@
 </head>
 
 <body ng-app="school" ng-controller="detail_controller">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-    <!-- Start Logo Section -->
-    <section id="logo-section" class="text-center">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="logo text-center">
-                        <h1>Bridge the gap</h1>
-                        <span>Connect the dots</span>
-                    </div>
-                </div>
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="color:white" href="#">Home</a>
             </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" style="color:white">
+                    <li>
+                        <a href="#" style="color:white">About</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:white">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-    </section>
-    <!-- End Logo Section -->
+
+    </nav>
+    <!-- /.container -->
     <!-- Start Main Body Section -->
     <div class="mainbody-section text-center">
-        <div class="container">
-            <div class="row">
 
-                <div class="col-md-2">
-                  
-                </div>
 
-                <div class="col-md-8">
-
-                    <!-- Start Carousel Section -->
-                    <div class="home-slider">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="padding-bottom: 30px;">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img src="images/about-03.jpg" class="img-responsive" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="images/about-02.jpg" class="img-responsive" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="images/about-01.jpg" class="img-responsive" alt="">
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Start Carousel Section -->
-
-                </div>
-
-                <div class="col-md-2">
-                </div>
+        <div class=" row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    List of Schools
+                    <!--<small>Secondary Text</small>-->
+                </h1>
             </div>
         </div>
-
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-3">
-
-                
-
-                </div>
-
-                <div class="col-md-3">
-
-                 
-
-                </div>
-
-                <div class="col-md-3">
-
-                 
-
-                </div>
-
-                <div class="col-md-3">
-
-
-                </div>
-
-            </div>
-            //
-
-
-        </div>
-
-        <div class="container-fluid" style="text-align:left;">
-
+        <div class="container-fluid" style="text-align:left; background-image:url(https://cedricreyes.files.wordpress.com/2012/10/20121020-104644.jpg); background-size: 1000px">
+            <br /><br />
             <!-- Page Heading -->
-            <div class=" row">
+            <!--<div class=" row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         List of Schools
-                        <!--<small>Secondary Text</small>-->
+
                     </h1>
                 </div>
-            </div>
+            </div>-->
             <div class="row">
-             
-                <div class="col-md-8">
-                   <li ng-repeat="school in school_detail">
-                        <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-7">
+                    <li ng-repeat="school in school_detail">
+                        <div class="row" style="background-color:white">
 
-                            <div class="col-md-12" background="grey">
-                                <h3>{{school.SchoolName}}</h3>
-                                <h4>{{school.Address}},{{school.DistrictName}}<br />{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
+                            <div class="col-md-12">
+                                <div class="row" style="text-align: left">
+                                    <h2><span class="glyphicon glyphicon-bookmark" style="font-size:40px;"></span> {{school.SchoolName}}</h2>
+                                    <h4 style="font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-road" style="font-size:20px;margin-left:10px"></span>{{school.Address}},{{school.DistrictName}}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
+                                </div>
                                 <p>
-                                    <div class="row">
+                                    <div class="row" id="first">
                                         <div ng-if="school.FemaleStudentCount>0">
-                                            <div class="col-md-3">
+                                            <div class="col-md-2" style="font-family:'Times New Roman', Times, serif">
                                                 Total no of female students: {{school.FemaleStudentCount}}
                                             </div>
                                         </div>
                                         <div ng-if="school.MaleStudentCount>0">
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 Total no of male students : {{school.MaleStudentCount}}
                                             </div>
                                         </div>
                                         <div ng-if="school.MaleStudentCount == 0 && school.FemaleStudentCount == 0">
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 Student Enrollment data not available
                                             </div>
-                                        <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-2">
                                             Year of estd : {{school.YearOfEstd}}
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             Medium of instruction: {{language_dictionary[school.MediumOfInstruction]}}
                                         </div>
-                                    </div>
-                                    
-                                    <div ng-if="school.LibraryCount != null">
-                                        {{library_dictionary[school.LibraryCount]}}
-                                        <br />
-                                       No of books in library : {{school.BooksCount}}
-                                       No of books in library per child : {{Math.round(school.BooksCount/(school.FemaleStudentCount+school.MaleStudentCount))}}
 
-                                    </div>
-                                  
-                                    <div ng-if="school.FemaleToiletCount !=null">
-                                        <div ng-if="school.FemaleStudentCount>0">
-                                            No of female toilets: {{school.FemaleToiletCount}}
-                                            <div ng-if="school.FemaleToiletCount>0">
-                                                No. of female students per toilet  : {{Math.round(school.FemaleStudentCount/school.FemaleToiletCount)}}
+
+                                        <div ng-if="school.LibraryCount != null">
+                                            {{library_dictionary[school.LibraryCount]}}
+                                            <br />
+                                            No of books in library : {{school.BooksCount}}
+                                            No of books in library per child : {{Math.round(school.BooksCount/(school.FemaleStudentCount+school.MaleStudentCount))}}
+
+                                        </div>
+
+                                        <div ng-if="school.FemaleToiletCount !=null">
+                                            <div ng-if="school.FemaleStudentCount>0">
+                                                No of female toilets: {{school.FemaleToiletCount}}
+                                                <div ng-if="school.FemaleToiletCount>0">
+                                                    No. of female students per toilet  : {{Math.round(school.FemaleStudentCount/school.FemaleToiletCount)}}
+                                                </div>
+                                            </div>
+                                            <div ng-if="school.MaleStudentCount>0">
+                                                No of male toilets :{{school.MaleToiletCount}}
+                                                <div ng-if="school.MaleToiletCount>0">
+                                                    No of male students per toilet :{{Math.round(school.MaleStudentCount/school.MaleToiletCount)}}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div ng-if="school.MaleStudentCount>0">
-                                            No of male toilets :{{school.MaleToiletCount}}    
-                                            <div ng-if="school.MaleToiletCount>0">
-                                                No of male students per toilet :{{Math.round(school.MaleStudentCount/school.MaleToiletCount)}}
-                                            </div>  
+                                        <div ng-if="school.MidDayMeal != null">
+                                            Mid day meals not provided
+
+
                                         </div>
-                                         </div>
-                                    <div ng-if="school.MidDayMeal != null">
-                                      Mid day meals not provided
-
-
-                                    </div>
-                                    <div ng-if="school.ElectricityConnectionStatus != null">
+                                        <div ng-if="school.ElectricityConnectionStatus != null">
                                             Status of electricity connection : {{school.ElectricityConnectionStatus }}
-                                    </div>
-                                    <div ng-if="school.ClassroomCount != null">
+                                        </div>
+                                        <div ng-if="school.ClassroomCount != null">
                                             Total no. of classrooms for instructional purposes : {{school.ClassroomCount}}
                                             Total no of classrooms that need repair : {{school.ClassroomRepairCount}}
-                                        <div ng-if="school.studentclassroomratio >-1">
-                                            avg no. of students per classroom
-                                            {{school.studentclassroomratio}}
+                                            <div ng-if="school.studentclassroomratio >-1">
+                                                avg no. of students per classroom
+                                                {{school.studentclassroomratio}}
 
 
-                                        </div> 
+                                            </div>
+                                        </div>
+                                        <div ng-if="school.ComputerAidedLearning != null">
+                                            School provides computer aided learning : {{school.ComputerAidedLearning}}
+                                            No of computers : {{school.ComputerCount}}
+
+                                        </div>
+
+                                        <div ng-if="school.RTECurYearStudentCount != null">
+                                            No. of students given admission this year under RTE : {{school.RTECurYearStudentCount}}
+                                            No. of students given admission prev year under RTE :{{school.RTEPrevYearStudentCount}}
+                                        </div>
+
+
+
                                     </div>
-                                    <div ng-if="school.ComputerAidedLearning != null">
-                                         School provides computer aided learning : {{school.ComputerAidedLearning}}
-                                         No of computers : {{school.ComputerCount}}
-
-                                    </div>
-
-                                    <div ng-if="school.RTECurYearStudentCount != null">
-                                        No. of students given admission this year under RTE : {{school.RTECurYearStudentCount}}
-                                        No. of students given admission prev year under RTE :{{school.RTEPrevYearStudentCount}}
-                                    </div>
-
-                                  
-
-
                                 </p>
                                 <a class="btn btn-primary" href="#" ng-click="generate_pledge(school.SchoolCode)">I'd want to contribute <span class="glyphicon glyphicon-chevron-right"></span></a>
                                 <div ng-attr-id="{{school.SchoolCode}}">
+                                    <br />
 
                                 </div>
-                                  <hr>
+                                @*<hr>*@
                             </div>
                         </div>
+                        <br /><br />
                     </li>
-              
-                  
-                   
-                   
-                  
-                 
+
+
+
+
+
+
                 </div>
                 <!--Live Feed-->
-                <div class="col-md-4">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
                     <div class="row">
-                        <!--<img src="http://imheremovement.org/wp-content/uploads/2013/04/take-the-pledge.png" class="img-responsive" alt="">-->
-                        <img src="http://www.80g.co/wp-content/themes/twentyeleven/images/ngo%20consultancy_0.jpg" class="img-responsive" alt="">
-
                     </div>
                 </div>
             </div>
@@ -286,17 +241,17 @@
 
                                 <a href="#" ng-click="last_page()">{{no_of_pages}}</a>
                             </li>
-                            </div>
-</ul>
-                </div>
+                        </div>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
 
 
     </div>
-  
-    
+
+
     <!-- Start Portfolio Section -->
     <div class="section-modal modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
@@ -442,7 +397,7 @@
         </div>
     </div>
     <!-- End Portfolio Section -->
-   
+
 
 
 

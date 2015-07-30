@@ -1,0 +1,188 @@
+﻿<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<link href="@Url.Content("~/Content/animate.min.css")" rel="stylesheet" type="text/css" />
+
+<link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+
+@Scripts.Render("~/Scripts/index_angular.js"))<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Make a Pledge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="school" ng-controller="pledge_controller">
+    <<div class="row" style="background-color: #E3E3E3">
+
+    <div class="col-md-12">
+        <div class="row" style="text-align: left">
+            <h2><span class="glyphicon glyphicon-bookmark" style="font-size:40px;"></span> {{school.SchoolName}}</h2>
+            <h4 style="font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-road" style="font-size:20px;margin-left:10px"></span>{{school.Address}},{{school.DistrictName}}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
+        </div>
+        <p>
+            <div class="row" id="first">
+                <div ng-if="school.FemaleStudentCount>0">
+                    <div class="col-md-2" style="font-family:'Times New Roman', Times, serif">
+                        Total no of female students: {{school.FemaleStudentCount}}
+                    </div>
+                </div>
+                <div ng-if="school.MaleStudentCount>0">
+                    <div class="col-md-2">
+                        Total no of male students : {{school.MaleStudentCount}}
+                    </div>
+                </div>
+                <div ng-if="school.MaleStudentCount == 0 && school.FemaleStudentCount == 0">
+                    <div class="col-md-2">
+                        Student Enrollment data not available
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    Year of estd : {{school.YearOfEstd}}
+                </div>
+                <div class="col-md-2">
+                    Medium of instruction: {{language_dictionary[school.MediumOfInstruction]}}
+                </div>
+
+
+                <div ng-if="school.LibraryCount != null">
+                    {{library_dictionary[school.LibraryCount]}}
+                    <br />
+                    No of books in library : {{school.BooksCount}}
+                    No of books in library per child : {{Math.round(school.BooksCount/(school.FemaleStudentCount+school.MaleStudentCount))}}
+
+                </div>
+
+                <div ng-if="school.FemaleToiletCount !=null">
+                    <div ng-if="school.FemaleStudentCount>0">
+                        No of female toilets: {{school.FemaleToiletCount}}
+                        <div ng-if="school.FemaleToiletCount>0">
+                            No. of female students per toilet  : {{Math.round(school.FemaleStudentCount/school.FemaleToiletCount)}}
+                        </div>
+                    </div>
+                    <div ng-if="school.MaleStudentCount>0">
+                        No of male toilets :{{school.MaleToiletCount}}
+                        <div ng-if="school.MaleToiletCount>0">
+                            No of male students per toilet :{{Math.round(school.MaleStudentCount/school.MaleToiletCount)}}
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="school.MidDayMeal != null">
+                    Mid day meals not provided
+
+
+                </div>
+                <div ng-if="school.ElectricityConnectionStatus != null">
+                    Status of electricity connection : {{school.ElectricityConnectionStatus }}
+                </div>
+                <div ng-if="school.ClassroomCount != null">
+                    Total no. of classrooms for instructional purposes : {{school.ClassroomCount}}
+                    Total no of classrooms that need repair : {{school.ClassroomRepairCount}}
+                    <div ng-if="school.studentclassroomratio >-1">
+                        avg no. of students per classroom
+                        {{school.studentclassroomratio}}
+
+
+                    </div>
+                </div>
+                <div ng-if="school.ComputerAidedLearning != null">
+                    School provides computer aided learning : {{school.ComputerAidedLearning}}
+                    No of computers : {{school.ComputerCount}}
+
+                </div>
+
+                <div ng-if="school.RTECurYearStudentCount != null">
+                    No. of students given admission this year under RTE : {{school.RTECurYearStudentCount}}
+                    No. of students given admission prev year under RTE :{{school.RTEPrevYearStudentCount}}
+                </div>
+
+
+
+            </div>
+        </p>
+            <br />
+
+        </div>
+        @*<hr>*@
+    </div>
+</div>
+        <div class="page-header">
+            <h2 style="font-family:'Monotype Corsiva'">Those who have been blessed with extraordinary wealth have an opportunity, some would say a responsibility - we consider it a privilege - to give back to their communities, be they local, national or global.</h2>
+        </div>
+
+
+
+        <!-- Contact Form - START -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <form id="pledge_form"class="form-horizontal" method="post">
+                            <fieldset>
+                                <legend class="text-center header">Pledge</legend>
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="glyphicon glyphicon-user bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <input id="fname" name="name" type="text" placeholder="Organization / Individual" class="form-control" ng-model="pledge_form.organization_name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="glyphicon glyphicon-gift bigicon"></i></span>
+                                    <div class="col-md-8" ng-if="school.ClassroomCount != null">
+                                      I pledge to <input id="lname" name="name" type="text" required placeholder=" eg Sponsor/build/repair 2 classroom(s)" class="form-control" ng-model="pledge_form.pledge"> 
+                                    </div>
+                                    <div class="col-md-8" ng-if="school.FemaleToiletCount !=null">
+                                        I pledge to <input id="lname" name="name" type="text" required placeholder=" eg Sponsor/build 2 toilets(s) " class="form-control" ng-model="pledge_form.pledge"> 
+                                    </div>
+                                    <div class="col-md-8" ng-if="school.ComputerAidedLearning != null">
+                                        I pledge to <input id="lname" name="name" type="text" required placeholder=" eg build 1 computer lab / donate 5 computers " class="form-control" ng-model="pledge_form.pledge"> 
+                                    </div>
+                                    <div class="col-md-8" ng-if="school.LibraryCount != null">
+                                        I pledge to <input id="lname" name="name" type="text" required placeholder=" eg build a library / donate 10 books  " class="form-control" ng-model="pledge_form.pledge">
+                                    </div>
+                                    <div class="col-md-8" ng-if="school.ElectricityConnectionStatus != null">
+                                        I pledge to <input id="lname" name="name" type="text" required placeholder=" eg sponsor/get an electricity connection " class="form-control" ng-model="pledge_form.pledge"> 
+                                    </div>
+                                    <div class="col-md-8" ng-if="school.RTECurYearStudentCount != null">
+                                        I pledge to <input id="lname" name="name" type="text" required placeholder="eg I will help an underpreviliged get his seat " class="form-control" ng-model="pledge_form.pledge"> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="glyphicon glyphicon-edit bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here." rows="7" ng-model="pledge_form.comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg" ng-click="pledge()">Submit</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .header {
+                color: #36A0FF;
+                font-size: 27px;
+                padding: 10px;
+            }
+
+            .bigicon {
+                font-size: 35px;
+                color: #36A0FF;
+            }
+        </style>
+        <!-- Contact Form - END -->
+    </div>
+</body>
+</html>

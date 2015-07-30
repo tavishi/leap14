@@ -67,7 +67,11 @@ namespace Sample.Controllers
             return View();
         }
 
+        public ActionResult pledge()
+        {
+            return View();
 
+        }
 
         public ActionResult Contact()
         {
