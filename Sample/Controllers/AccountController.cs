@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Facebook;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
@@ -225,14 +226,17 @@ namespace Sample.Controllers
 
             if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
             {
-                return RedirectToLocal(returnUrl);
+                //return RedirectToLocal(returnUrl);
+                var uname = result.UserName;
+
+                return RedirectToAction("../Home/pledge", new { mail = uname });
             }
 
             if (User.Identity.IsAuthenticated)
             {
                 // If the current user is logged in add the new account
                 OAuthWebSecurity.CreateOrUpdateAccount(result.Provider, result.ProviderUserId, User.Identity.Name);
-                return RedirectToLocal(returnUrl);
+                return RedirectToAction("../Home/pledge");
             }
             else
             {
@@ -257,7 +261,7 @@ namespace Sample.Controllers
 
             if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
             {
-                return RedirectToAction("Manage");
+                return RedirectToAction("../Home/pledge");
             }
 
             if (ModelState.IsValid)
@@ -276,7 +280,8 @@ namespace Sample.Controllers
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                         OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
-                        return RedirectToLocal(returnUrl);
+                        //return RedirectToLocal(returnUrl);
+                        return RedirectToAction("../Home/Pledge");
                     }
                     else
                     {

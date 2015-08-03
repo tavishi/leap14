@@ -111,8 +111,8 @@
 
                                             <label style="color:whitesmoke; font-size:240%; font-family:'Bookman Old Style'">Select the state and district:</label>
                                             <br /><br />
-                                            &nbsp;&nbsp;<select class="form-control" name="category" id="category" onchange="javascript: dropdownlist(this.options[this.selectedIndex].value);" ng-model="location.state">
-                                                <option>Select the state</option>
+                                            &nbsp;&nbsp;<select class="form-control" name="category" id="category" onchange="javascript: dropdownlist(this.options[this.selectedIndex].value);"  ng-model="location.state">
+                                            <option selected disabled value="">Select the state</option> 
                                                 <option value="AP">Andhra Pradesh</option>
                                                 <option>Goa</option>
                                             </select>
@@ -173,8 +173,6 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <h1>Full Slider by Start Bootstrap</h1>
-                <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the <code>full-slider.css</code>file.</p>
             </div>
         </div>
 
@@ -183,7 +181,6 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
             <!-- /.row -->

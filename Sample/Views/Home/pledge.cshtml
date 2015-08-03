@@ -7,7 +7,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
 <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
 
-@Scripts.Render("~/Scripts/index_angular.js"))<!DOCTYPE html>
+@Scripts.Render("~/Scripts/index_angular.js")<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,99 +19,104 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body ng-app="school" ng-controller="pledge_controller">
-    <<div class="row" style="background-color: #E3E3E3">
+    <div class="row" style="background-color: #E3E3E3">
+    
 
-    <div class="col-md-12">
-        <div class="row" style="text-align: left">
-            <h2><span class="glyphicon glyphicon-bookmark" style="font-size:40px;"></span> {{school.SchoolName}}</h2>
-            <h4 style="font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-road" style="font-size:20px;margin-left:10px"></span>{{school.Address}},{{school.DistrictName}}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
-        </div>
-        <p>
-            <div class="row" id="first">
-                <div ng-if="school.FemaleStudentCount>0">
-                    <div class="col-md-2" style="font-family:'Times New Roman', Times, serif">
-                        Total no of female students: {{school.FemaleStudentCount}}
-                    </div>
+            <div class="col-md-12">
+                <div class="row" style="text-align: left">
+                    <h2><span class="glyphicon glyphicon-bookmark" style="font-size:40px;"></span> {{school.SchoolName}}</h2>
+                    <h4 style="font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-road" style="font-size:20px;margin-left:10px"></span>{{school.Address}},{{school.DistrictName}}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
                 </div>
-                <div ng-if="school.MaleStudentCount>0">
-                    <div class="col-md-2">
-                        Total no of male students : {{school.MaleStudentCount}}
-                    </div>
-                </div>
-                <div ng-if="school.MaleStudentCount == 0 && school.FemaleStudentCount == 0">
-                    <div class="col-md-2">
-                        Student Enrollment data not available
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    Year of estd : {{school.YearOfEstd}}
-                </div>
-                <div class="col-md-2">
-                    Medium of instruction: {{language_dictionary[school.MediumOfInstruction]}}
-                </div>
-
-
-                <div ng-if="school.LibraryCount != null">
-                    {{library_dictionary[school.LibraryCount]}}
-                    <br />
-                    No of books in library : {{school.BooksCount}}
-                    No of books in library per child : {{Math.round(school.BooksCount/(school.FemaleStudentCount+school.MaleStudentCount))}}
-
-                </div>
-
-                <div ng-if="school.FemaleToiletCount !=null">
-                    <div ng-if="school.FemaleStudentCount>0">
-                        No of female toilets: {{school.FemaleToiletCount}}
-                        <div ng-if="school.FemaleToiletCount>0">
-                            No. of female students per toilet  : {{Math.round(school.FemaleStudentCount/school.FemaleToiletCount)}}
+                <p>
+                    <div class="row" id="first">
+                        <div ng-if="school.FemaleStudentCount>0">
+                            <div class="col-md-2" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                Total no of female students: {{school.FemaleStudentCount}}
+                            </div>
                         </div>
-                    </div>
-                    <div ng-if="school.MaleStudentCount>0">
-                        No of male toilets :{{school.MaleToiletCount}}
-                        <div ng-if="school.MaleToiletCount>0">
-                            No of male students per toilet :{{Math.round(school.MaleStudentCount/school.MaleToiletCount)}}
+                        <div ng-if="school.MaleStudentCount>0">
+                            <div class="col-md-2" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                Total no of male students : {{school.MaleStudentCount}}
+                            </div>
                         </div>
+                        <div ng-if="school.MaleStudentCount == 0 && school.FemaleStudentCount == 0">
+                            <div class="col-md-2" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                Student Enrollment data not available
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            Year of estd : {{school.YearOfEstd}}
+                        </div>
+                        <div class="col-md-2" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            Medium of instruction: {{language_dictionary[school.MediumOfInstruction]}}
+                        </div>
+
+
+                        <div ng-if="school.LibraryCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            {{library_dictionary[school.LibraryCount]}}
+                            <br />
+                            No of books in library : {{school.BooksCount}}
+                            No of books in library per child : {{Math.round(school.BooksCount/(school.FemaleStudentCount+school.MaleStudentCount))}}
+
+                        </div>
+
+                        <div ng-if="school.FemaleToiletCount !=null">
+                            <div ng-if="school.FemaleStudentCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                No of female toilets: {{school.FemaleToiletCount}}
+                                <div ng-if="school.FemaleToiletCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                    No. of female students per toilet  : {{Math.round(school.FemaleStudentCount/school.FemaleToiletCount)}}
+                                </div>
+                            </div>
+                            <div ng-if="school.MaleStudentCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                No of male toilets :{{school.MaleToiletCount}}
+                                <div ng-if="school.MaleToiletCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                    No of male students per toilet :{{Math.round(school.MaleStudentCount/school.MaleToiletCount)}}
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="school.MidDayMeal != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            Mid day meals not provided
+
+
+                        </div>
+                        <div ng-if="school.ElectricityConnectionStatus != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            Status of electricity connection : {{school.ElectricityConnectionStatus }}
+                        </div>
+                        <div ng-if="school.ClassroomCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            Total no. of classrooms for instructional purposes : {{school.ClassroomCount}}
+                            Total no of classrooms that need repair : {{school.ClassroomRepairCount}}
+                            <div ng-if="school.studentclassroomratio >-1" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                avg no. of students per classroom
+                                {{school.studentclassroomratio}}
+
+
+                            </div>
+                        </div>
+                        <div ng-if="school.ComputerAidedLearning != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            School provides computer aided learning : {{school.ComputerAidedLearning}}
+                            No of computers : {{school.ComputerCount}}
+
+                        </div>
+
+                        <div ng-if="school.RTECurYearStudentCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            No. of students given admission this year under RTE : {{school.RTECurYearStudentCount}}
+                            No. of students given admission prev year under RTE :{{school.RTEPrevYearStudentCount}}
+                        </div>
+                        <div ng-if="school.FemaleTeacherCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                            No. of female teachers : {{school.FemaleTeacherCount}}
+                            No. of male teachers :{{school.MaleTeacherCount}}
+                            Student Teacher Ratio :{{school.StudentTeacherRatio}}
+                        </div>
+
+
                     </div>
-                </div>
-                <div ng-if="school.MidDayMeal != null">
-                    Mid day meals not provided
-
-
-                </div>
-                <div ng-if="school.ElectricityConnectionStatus != null">
-                    Status of electricity connection : {{school.ElectricityConnectionStatus }}
-                </div>
-                <div ng-if="school.ClassroomCount != null">
-                    Total no. of classrooms for instructional purposes : {{school.ClassroomCount}}
-                    Total no of classrooms that need repair : {{school.ClassroomRepairCount}}
-                    <div ng-if="school.studentclassroomratio >-1">
-                        avg no. of students per classroom
-                        {{school.studentclassroomratio}}
-
-
-                    </div>
-                </div>
-                <div ng-if="school.ComputerAidedLearning != null">
-                    School provides computer aided learning : {{school.ComputerAidedLearning}}
-                    No of computers : {{school.ComputerCount}}
-
-                </div>
-
-                <div ng-if="school.RTECurYearStudentCount != null">
-                    No. of students given admission this year under RTE : {{school.RTECurYearStudentCount}}
-                    No. of students given admission prev year under RTE :{{school.RTEPrevYearStudentCount}}
-                </div>
-
-
+                </p>
+                <br />
 
             </div>
-        </p>
-            <br />
-
+            @*<hr>*@
         </div>
-        @*<hr>*@
     </div>
-</div>
         <div class="page-header">
             <h2 style="font-family:'Monotype Corsiva'">Those who have been blessed with extraordinary wealth have an opportunity, some would say a responsibility - we consider it a privilege - to give back to their communities, be they local, national or global.</h2>
         </div>
@@ -151,6 +156,9 @@
                                     </div>
                                     <div class="col-md-8" ng-if="school.RTECurYearStudentCount != null">
                                         I pledge to <input id="lname" name="name" type="text" required placeholder="eg I will help an underpreviliged get his seat " class="form-control" ng-model="pledge_form.pledge"> 
+                                    </div>
+                                    <div class="col-md-8" ng-if="school.FemaleTeacherCount != null">
+                                        I pledge to <input id="lname" name="name" type="text" required placeholder="eg 5 people would volunteer to teach for 5 months " class="form-control" ng-model="pledge_form.pledge">
                                     </div>
                                 </div>
                                 <div class="form-group">

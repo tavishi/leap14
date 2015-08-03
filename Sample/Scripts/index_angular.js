@@ -253,8 +253,11 @@ var detail_controller = function ($scope, get_schools, $rootScope, $log, $window
 var pledge_controller = function ($scope, $window, $log, get_schools) {
     $scope.log = $log;
     $scope.school = JSON.parse(localStorage.getItem('selected_school'));
-   
+    $scope.state_dictionary = { AP: 'Andhra Pradesh', Goa: 'Goa' };
+    $scope.language_dictionary = { 4: "Hindi", 17: "Telugu", 18: "Urdu", 99: "Others", 19: "English" };
+    $scope.library_dictionary = { 1: 'Has Library', 2: 'No Library in school' };
     $scope.category = localStorage.getItem('type');
+    $scope.Math = window.Math;
     $log.log($scope.school);
 $scope.pledge = function () {
     get_schools.send_pledge($scope.selected_school.SchoolCode,$scope.category,$scope.pledge_form).then(function (response) {

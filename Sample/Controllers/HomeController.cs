@@ -67,8 +67,9 @@ namespace Sample.Controllers
             return View();
         }
 
-        public ActionResult pledge()
+        public ActionResult pledge( string mail)
         {
+            ViewBag.mail = mail;
             return View();
 
         }

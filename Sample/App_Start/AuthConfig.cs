@@ -22,9 +22,9 @@ namespace Sample
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            OAuthWebSecurity.RegisterFacebookClient(
+                appId: "868483123230039",
+               appSecret: "12674df0e3d97a2c89273b06e7b89e21");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }
