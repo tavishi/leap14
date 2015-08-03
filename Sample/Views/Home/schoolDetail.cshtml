@@ -219,7 +219,8 @@
                                 </p>
                             <div class="row" style="text-align: left">
 
-                                <a class="btn btn-primary" href="#" ng-click="generate_pledge(school.SchoolCode)">I'd want to contribute <span class="glyphicon glyphicon-chevron-right"></span></a>
+                              <!---<a class="btn btn-primary" href="#" ng-click="generate_pledge(school.SchoolCode)">I'd want to contribute <span class="glyphicon glyphicon-chevron-right"></span></a> -->
+                                @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
                             </div>
                                      <div ng-attr-id="{{school.SchoolCode}}">
                                     <br />
@@ -305,8 +306,8 @@
     </div>
 
 
-    <!-- Start Portfolio Section -->
-    <div class="section-modal modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-hidden="true">
+
+   <!---<div class="section-modal modal fade" id="facebook_login" tabindex="-1" role="dialog" aria-hidden="true" modal="showModal">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -316,145 +317,21 @@
             </div>
 
             <div class="container">
-                <div class="row">
-                    <div class="section-title text-center">
-                        <h3>Our Portfolio</h3>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate</p>
-                    </div>
-                </div>
-                <div class="row">
+         
+          ////Html.Action("ExternalLoginsList","Account", new { ReturnUrl = ViewBag.ReturnUrl })
+    </div></div></div> -->
 
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/1.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/2.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/3.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/4.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/5.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/6.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/7.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/8.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/9.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/10.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/11.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="portfolio-item">
-                            <img src="images/portfolio/12.png" class="img-responsive" alt="...">
-                            <div class="portfolio-details text-center">
-                                <h4>Project Name</h4>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div><!-- /.row -->
-            </div>
-
-        </div>
+   <!--- <div class="modal-header">
+        <h3 class="modal-title">Login</h3>
     </div>
-    <!-- End Portfolio Section -->
+    <div class="modal-body">
+      // 
 
-
-
-
-
+</div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div> -->
 </body>
 
 </html>

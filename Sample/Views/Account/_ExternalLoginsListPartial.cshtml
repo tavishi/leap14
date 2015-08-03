@@ -12,12 +12,14 @@ else
     using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
     {
     @Html.AntiForgeryToken()
-    <fieldset id="socialLoginList">
-        <legend>Log in using another service</legend>
+    <fieldset id="socialLoginList" ng-app="school" ng-controller="detail_controller">
+    
         <p>
-        @foreach (AuthenticationClientData p in Model)
-        {
-            <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">@p.DisplayName</button>
+                    @foreach (AuthenticationClientData p in Model)
+            {
+                <button class="btn btn-primary" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account" ng-click="generate_pledge(school.SchoolCode)">I'd want to contribute </button>
+
+            <!----<button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">@p.DisplayName</button> -->
         }
         </p>
     </fieldset>

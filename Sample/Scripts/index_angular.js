@@ -231,8 +231,10 @@ var detail_controller = function ($scope, get_schools, $rootScope, $log, $window
 
             }
         }
-      
-       $window.location.href = '/Home/pledge';
+  
+           //   @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+     //   $window.location.href = '/Account/ExternalLoginsList';
+
     }
     
   

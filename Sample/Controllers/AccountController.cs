@@ -33,7 +33,7 @@ namespace Sample.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+       [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
@@ -204,9 +204,9 @@ namespace Sample.Controllers
         //
         // POST: /Account/ExternalLogin
 
-        [HttpPost]
+     //   [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+     //   [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
@@ -305,7 +305,7 @@ namespace Sample.Controllers
         }
 
         [AllowAnonymous]
-        [ChildActionOnly]
+    //  [ChildActionOnly]
         public ActionResult ExternalLoginsList(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
