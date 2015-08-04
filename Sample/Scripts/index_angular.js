@@ -40,6 +40,7 @@ school.service(
          send_pledge:send_pledge,
          get_scroll: get_scroll,
          get_count: get_count,
+         get_scroll_no: get_scroll_no
          
 
 
@@ -57,7 +58,18 @@ school.service(
             });
             return (request.then(handleSuccess, handleError));
         }
+        function get_scroll_no() {
+            var request = $http({
+                method: "get",
+                url: "http://leapschool.azurewebsites.net/api/",
 
+                params: {
+                    type:"scroll_count"
+
+                }
+            });
+            return (request.then(handleSuccess, handleError));
+        }
         
         function get_details(state, district, type,pageno) {
          
@@ -75,20 +87,21 @@ school.service(
             return (request.then(handleSuccess, handleError));
         }
 
-        function get_scroll() {
+        function get_scroll( count) {
 
             var request = $http({
                 method: "get",
                 url: "/Home/get_scroll",
                 params: {
-                 action:"scroll"
+                    action: "scroll",
+                    count:count
                 }
             });
             return (request.then(handleSuccess, handleError));
 
         }
 
-        function send_pledge(school_code, type,pledge_form) {
+        function send_pledge(school_code, type,pledge_form,username) {
 
             var request = $http({
                 method: "post",
@@ -101,7 +114,8 @@ school.service(
                     category: type,
                     organization: pledge_form.organization_name,
                     pledge: pledge_form.pledge,
-                    comment:pledge_form.comment
+                    comment: pledge_form.comment,
+                    user:username
 
                 }
             });
@@ -131,7 +145,7 @@ school.service(
  );
 
 
-var detail_controller = function ($scope, get_schools, $rootScope, $log, $window) {
+var detail_controller = function ($scope, get_schools, $rootScope, $log, $window,$interval) {
     $scope.log = $log;
     $scope.school_detail = {};
     $scope.$log = $log;
@@ -145,6 +159,9 @@ var detail_controller = function ($scope, get_schools, $rootScope, $log, $window
     $scope.language_dictionary = { 4: "Hindi", 17: "Telugu", 18: "Urdu", 99: "Others", 19: "English" };
     $scope.library_dictionary = { 1: 'Has Library', 2: 'No Library in school' };
     $scope.no_of_pages = 0;
+    $scope.scroll_count = 0;
+    $scope.total_scroll = 0;
+    $scope.current_scroll = {};
     $scope.school_list = function (pageno) {
        
         $log.log(localStorage.getItem('state'));
@@ -155,6 +172,24 @@ var detail_controller = function ($scope, get_schools, $rootScope, $log, $window
     
             $scope.school_detail = response.data;
         });
+    }
+    $scope.update_feed = function () {
+
+        get_schools.get_scroll($scope.current_scroll).then(function (response) {
+            $scope.current_scroll = response.data;
+            $scope.scroll_count = ($scope.scroll_count + 2)%($scope.total_scroll);
+        })
+
+    }
+
+    $scope.get_total_scroll = function () {
+
+        get_schools.get_scroll_no().then(function (response) {
+            $scope.get_total_scroll = response.data.count;
+
+        }).then(function () { update_feed($scope.scroll_count) });
+
+
     }
     $scope.set_page_count= function(page_count){
         $scope.no_of_pages = page_count;
@@ -242,7 +277,8 @@ var detail_controller = function ($scope, get_schools, $rootScope, $log, $window
     init = function () {
 
         $scope.calculate_pages();
-      
+        $scope.get_total_scroll();
+       
         }
         init();
     
@@ -260,9 +296,13 @@ var pledge_controller = function ($scope, $window, $log, get_schools) {
     $scope.library_dictionary = { 1: 'Has Library', 2: 'No Library in school' };
     $scope.category = localStorage.getItem('type');
     $scope.Math = window.Math;
-    $log.log($scope.school);
+    $scope.username = "";
+    $scope.updateuser = function (username) {
+        $scope.username = username;
+        $log.log($scope.username);
+      }
 $scope.pledge = function () {
-    get_schools.send_pledge($scope.selected_school.SchoolCode,$scope.category,$scope.pledge_form).then(function (response) {
+    get_schools.send_pledge($scope.school.SchoolCode,$scope.category,$scope.pledge_form,$scope.username).then(function (response) {
         if (response.data == true) {
             $window.location('/Home/schoolDetail');
         }
