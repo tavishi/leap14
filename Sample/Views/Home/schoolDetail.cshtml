@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/statistics/overview.js"></script>
     <style>
         .tag {
             background: #900 none repeat scroll 0px 0px;
@@ -10,6 +12,12 @@
             margin: 0px 4px;
             padding: 2px 7px;
         }
+        .bgimg {
+            background-image: url('http://www.rootsweb.ancestry.com/~moicgs/Web-Images/NotePaper.png');
+        }
+
+
+        
 
     </style>
     <meta charset="utf-8">
@@ -48,7 +56,10 @@
 </head>
 
 <body ng-app="school" ng-controller="detail_controller">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <script>
+        var count = 0;
+    </script> 
+       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
         <div class="container">
 
@@ -83,7 +94,7 @@
     <!-- Start Main Body Section -->
     <div class="mainbody-section text-center">
 
-
+       
 
         <div class="container-fluid" style="text-align:left; background-image:url(https://cedricreyes.files.wordpress.com/2012/10/20121020-104644.jpg); background-size: 1000px">
             <br /><br />
@@ -96,17 +107,64 @@
                     </h1>
                 </div>
             </div>-->
+
+
+          
             <div class="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-7">
+                <div class="col-md-7" ng-init="count = 0">
                     <li ng-repeat="school in school_detail">
-                        <div class="row" style="background-color:white">
+                        <div class="row" style="background-color:white" ng-init="count= count+1">
 
                             <div class="col-md-12">
                                 <div class="row" style="text-align: left">
-                                    <h2> <span class="glyphicon glyphicon-bookmark" style="font-size:40px;"></span> {{school.SchoolName}}</h2>
-                                    <h4 style="font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-road" style="font-size:20px;margin-left:10px"></span>{{school.Address}},{{school.DistrictName}}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
-                                </div>
+                           
+                                        <h2> <span class="glyphicon glyphicon-bookmark" style="font-size:40px;"></span> {{school.SchoolName}}</h2>
+                                        <h4 style="font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-road" style="font-size:20px;margin-left:10px"></span>{{school.Address}},{{school.DistrictName}}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
+                                   
+                                        <div class="row">
+                                
+                                    <script>
+
+                                        //google.load("visualization", "1", { packages: ["corechart"] });
+                                        //google.setOnLoadCallback(drawChart);
+                                        //function drawChart() {
+                                        //    var data = google.visualization.arrayToDataTable([
+                                        //      ["Category", "Toilets Present"," Ideal Number", { role: "style" }],
+                                        //      ["Boys", 10,20, "#b87333"],
+                                        //      ["Girls", 10,49, "silver"],
+
+                                        //    ]);
+
+                                        //    var view = new google.visualization.DataView(data);
+                                        //    view.setColumns([0, 1,
+                                        //                     {
+                                        //                         calc: "stringify",
+                                        //                         sourceColumn: 1,
+                                        //                         type: "string",
+                                        //                         role: "annotation"
+                                        //                     },
+                                        //                     2]);
+
+                                        //    var options = {
+                                        //        //  title: "Stats",
+                                        //        width: 200,
+                                        //        height: 200,
+                                        //        bar: { groupWidth: "95%" },
+                                        //        legend: { position: "none" },
+                                        //        isStacked: true
+                                        //    };
+                                        //    var school_code = angular.element(document.querySelector('[ng-controller="detail_controller"]')).scope().school.SchoolCode;
+                                            
+                                        //    var chart = new google.visualization.BarChart(document.getElementById("barchart_values"+school_code));
+                                        //    chart.draw(view, options);
+                                        //    count++;
+                                        //}
+                                    </script>
+                                          <!---- <div ng-attr-id="{{ 'barchart_values' + count }} "style=" width: 200px; height :400px;"></div></div>-->
+                                
+                                
+                                 </div>
                                 <p>
                                     <div class="row" id="first">
                                         <div ng-if="school.FemaleStudentCount>0">
@@ -260,15 +318,15 @@
                             <p style="color:whitesmoke; font-size:100px; text-align:center; font-family:'Monotype Corsiva';"><span class="glyphicon glyphicon-heart" style="font-size:65px; color:darkred"></span> Pledges</p>
                             <hr />
                             <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <img src="http://www.rootsweb.ancestry.com/~moicgs/Web-Images/NotePaper.png" />
+                                <div class="item active" >
+                                  <div class="bgimg">
+
+
+                                  </div>
+                                       
                                 </div>
                             </div>
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <img src="http://www.rootsweb.ancestry.com/~moicgs/Web-Images/NotePaper.png" />
-                                </div>
-                            </div>
+                       
                         </div>
                     </div>
                 </div>

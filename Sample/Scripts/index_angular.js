@@ -5,6 +5,7 @@ var school = angular.module("school", []);
 school
   .config(function ($httpProvider) {
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
+      delete $httpProvider.defaults.headers.post['Content-type'];
   });
 
 
@@ -61,10 +62,10 @@ school.service(
         function get_scroll_no() {
             var request = $http({
                 method: "get",
-                url: "http://leapschool.azurewebsites.net/api/",
+                url: "http://leapschool.azurewebsites.net/api/Pledge",
 
                 params: {
-                    type:"scroll_count"
+                    scroll_count:"scroll_count"
 
                 }
             });
@@ -104,15 +105,13 @@ school.service(
         function send_pledge(school_code, type,pledge_form,username) {
 
             var request = $http({
-                method: "post",
-                url: "Home/send_pledge",
+                method: "get",
+                url: "http://leapschool.azurewebsites.net/api/Pledge",
+              
                 params: {
-                    action: "add"
-                },
-                data: {
                     school_code: school_code,
                     category: type,
-                    organization: pledge_form.organization_name,
+                    org: pledge_form.organization_name,
                     pledge: pledge_form.pledge,
                     comment: pledge_form.comment,
                     user:username
@@ -187,7 +186,7 @@ var detail_controller = function ($scope, get_schools, $rootScope, $log, $window
         get_schools.get_scroll_no().then(function (response) {
             $scope.get_total_scroll = response.data.count;
 
-        }).then(function () { update_feed($scope.scroll_count) });
+        }).then(function () { $scope.update_feed($scope.scroll_count) });
 
 
     }
@@ -301,7 +300,8 @@ var pledge_controller = function ($scope, $window, $log, get_schools) {
         $scope.username = username;
         $log.log($scope.username);
       }
-$scope.pledge = function () {
+    $scope.pledge = function () {
+      
     get_schools.send_pledge($scope.school.SchoolCode,$scope.category,$scope.pledge_form,$scope.username).then(function (response) {
         if (response.data == true) {
             $window.location('/Home/schoolDetail');
