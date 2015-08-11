@@ -58,8 +58,8 @@
 <body ng-app="school" ng-controller="detail_controller">
     <script>
         var count = 0;
-    </script> 
-       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    </script>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
         <div class="container">
 
@@ -74,11 +74,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-    
+
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        
+
                 <br /><br />
                 <div class="container" style="text-align:center;">
                     <ul class="nav navbar-nav" style="color:white">
@@ -94,7 +94,7 @@
     <!-- Start Main Body Section -->
     <div class="mainbody-section text-center">
 
-       
+
 
         <div class="container-fluid" style="text-align:left; background-image:url(https://cedricreyes.files.wordpress.com/2012/10/20121020-104644.jpg); background-size: 1000px">
             <br /><br />
@@ -109,300 +109,321 @@
             </div>-->
 
 
-          
+
             <div class="row">
+                <div ng-if="school_detail.length == 0">
+                    <div class="col-md-12" style="font-family:'Times New Roman', Times, serif;text-align:center">
+                        <br /><br />
+                        <span class="tag" style="text-align:center;font-size:x-large"> All eligible government schools serve mid day meals </span>
+                    </div>
+                </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-7" ng-init="count = 0">
+                 
                     <li ng-repeat="school in school_detail">
                         <div class="row" style="background-color:white" ng-init="count= count+1">
 
                             <div class="col-md-12">
                                 <div class="row" style="text-align: left">
-                           
-                                        <h2> <span class="glyphicon glyphicon-bookmark" style="font-size:40px;"></span> {{school.SchoolName}}</h2>
-                                        <h4 style="font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-road" style="font-size:20px;margin-left:10px"></span>{{school.Address}},{{school.DistrictName}}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
-                                   
-                                        <div class="row">
-                                
-                                    <script>
 
-                                        //google.load("visualization", "1", { packages: ["corechart"] });
-                                        //google.setOnLoadCallback(drawChart);
-                                        //function drawChart() {
-                                        //    var data = google.visualization.arrayToDataTable([
-                                        //      ["Category", "Toilets Present"," Ideal Number", { role: "style" }],
-                                        //      ["Boys", 10,20, "#b87333"],
-                                        //      ["Girls", 10,49, "silver"],
+                                    <h2> <span class="glyphicon glyphicon-bookmark" style="font-size:40px;"></span> {{school.SchoolName}}</h2>
+                                    <h4 style="font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-road" style="font-size:20px;margin-left:10px"></span>{{school.Address}},{{school.DistrictName}}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{state_dictionary[school.StateName]}} - {{school.Pincode}}</h4>
 
-                                        //    ]);
+                                    <div class="row">
 
-                                        //    var view = new google.visualization.DataView(data);
-                                        //    view.setColumns([0, 1,
-                                        //                     {
-                                        //                         calc: "stringify",
-                                        //                         sourceColumn: 1,
-                                        //                         type: "string",
-                                        //                         role: "annotation"
-                                        //                     },
-                                        //                     2]);
+                                        <script>
 
-                                        //    var options = {
-                                        //        //  title: "Stats",
-                                        //        width: 200,
-                                        //        height: 200,
-                                        //        bar: { groupWidth: "95%" },
-                                        //        legend: { position: "none" },
-                                        //        isStacked: true
-                                        //    };
-                                        //    var school_code = angular.element(document.querySelector('[ng-controller="detail_controller"]')).scope().school.SchoolCode;
-                                            
-                                        //    var chart = new google.visualization.BarChart(document.getElementById("barchart_values"+school_code));
-                                        //    chart.draw(view, options);
-                                        //    count++;
-                                        //}
-                                    </script>
-                                          <!---- <div ng-attr-id="{{ 'barchart_values' + count }} "style=" width: 200px; height :400px;"></div></div>-->
-                                
-                                
-                                 </div>
-                                <p>
-                                    <div class="row" id="first">
-                                        <div ng-if="school.FemaleStudentCount>0">
-                                            <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                                <span class="tag">    Total no of female students:{{school.FemaleStudentCount}} </span>
-                                            </div>
-                                        </div>
-                                        <div ng-if="school.MaleStudentCount>0">
-                                            <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                                <span class="tag">   Total no of male students : {{school.MaleStudentCount}} </span>
-                                            </div>
-                                        </div>
-                                        <div ng-if="school.MaleStudentCount == 0 && school.FemaleStudentCount == 0">
-                                            <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                                <span class="tag"> Student Enrollment data not available </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <span class="tag">     Year of estd : {{school.YearOfEstd}} </span>
-                                        </div>
-                                        <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <span class="tag">  Medium of instruction: {{language_dictionary[school.MediumOfInstruction]}} </span>
-                                        </div>
+                                            //google.load("visualization", "1", { packages: ["corechart"] });
+                                            //google.setOnLoadCallback(drawChart);
+                                            //function drawChart() {
+                                            //    var data = google.visualization.arrayToDataTable([
+                                            //      ["Category", "Toilets Present"," Ideal Number", { role: "style" }],
+                                            //      ["Boys", 10,20, "#b87333"],
+                                            //      ["Girls", 10,49, "silver"],
+
+                                            //    ]);
+
+                                            //    var view = new google.visualization.DataView(data);
+                                            //    view.setColumns([0, 1,
+                                            //                     {
+                                            //                         calc: "stringify",
+                                            //                         sourceColumn: 1,
+                                            //                         type: "string",
+                                            //                         role: "annotation"
+                                            //                     },
+                                            //                     2]);
+
+                                            //    var options = {
+                                            //        //  title: "Stats",
+                                            //        width: 200,
+                                            //        height: 200,
+                                            //        bar: { groupWidth: "95%" },
+                                            //        legend: { position: "none" },
+                                            //        isStacked: true
+                                            //    };
+                                            //    var school_code = angular.element(document.querySelector('[ng-controller="detail_controller"]')).scope().school.SchoolCode;
+
+                                            //    var chart = new google.visualization.BarChart(document.getElementById("barchart_values"+school_code));
+                                            //    chart.draw(view, options);
+                                            //    count++;
+                                            //}
+                                        </script>
+                                        <!---- <div ng-attr-id="{{ 'barchart_values' + count }} "style=" width: 200px; height :400px;"></div></div>-->
+
+
                                     </div>
-                                    <br />
-                                    <div class="row" id="first">
+                                    <p>
+                                        <div class="row" id="first">
+                                          
+                                            <div ng-if="school.FemaleStudentCount>0">
+                                                <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                    <span class="tag">    Total no of female students:{{school.FemaleStudentCount}} </span>
+                                                </div>
+                                            </div>
+                                            <div ng-if="school.MaleStudentCount>0">
+                                                <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                    <span class="tag">   Total no of male students : {{school.MaleStudentCount}} </span>
+                                                </div>
+                                            </div>
+                                            <div ng-if="school.MaleStudentCount == 0 && school.FemaleStudentCount == 0">
+                                                <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                    <span class="tag"> Student Enrollment data not available </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <span class="tag">     Year of estd : {{school.YearOfEstd}} </span>
+                                            </div>
+                                            <div class="col-md-3" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <span class="tag">  Medium of instruction: {{language_dictionary[school.MediumOfInstruction]}} </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row" id="first">
 
-                                        <div ng-if="school.LibraryCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <span class="tag">
-                                                {{library_dictionary[school.LibraryCount]}} </span>
-                                                <br />
-                                                <div class="col-md-4"> <span class="tag">  No of books in library : {{school.BooksCount}} </span> </div>
+                                            <div ng-if="school.LibraryCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <div class="col-md-3">
+                                                    <span class="tag">
+                                                        {{library_dictionary[school.LibraryCount]}}
+                                                    </span>
+                                                </div>
+                                                
+                                                <div class="col-md-3"> <span class="tag">  No of books in library : {{school.BooksCount}} </span> </div>
                                                 <div class="col-md-4">
                                                     <span class="tag">    No of books in library per child : {{Math.round(school.BooksCount/(school.FemaleStudentCount+school.MaleStudentCount))}} </span>
                                                 </div>
-</div>
+                                            </div>
 
-                                        <div ng-if="school.FemaleToiletCount !=null">
-                                            <div ng-if="school.FemaleStudentCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                                <div class="col-md-3">
-                                                    <span class="tag">   No of female toilets: {{school.FemaleToiletCount}} </span>
-</div>
-                                                <div ng-if="school.FemaleToiletCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                            <div ng-if="school.FemaleToiletCount !=null">
+                                                <div ng-if="school.FemaleStudentCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
                                                     <div class="col-md-3">
-                                                        <span class="tag">    No. of female students per toilet  : {{Math.round(school.FemaleStudentCount/school.FemaleToiletCount)}} </span>
-</div>
+                                                        <span class="tag">   No of female toilets: {{school.FemaleToiletCount}} </span>
+                                                    </div>
+                                                    <div ng-if="school.FemaleToiletCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                        <div class="col-md-3">
+                                                            <span class="tag">    No. of female students per toilet  : {{Math.round(school.FemaleStudentCount/school.FemaleToiletCount)}} </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div ng-if="school.MaleStudentCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                                <div class="col-md-3">
-                                                    <span class="tag">       No of male toilets :{{school.MaleToiletCount}}</span>  
-                                                </div>
-                                                <div ng-if="school.MaleToiletCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <div ng-if="school.MaleStudentCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
                                                     <div class="col-md-3">
-                                                        <span class="tag">    No of male students per toilet :{{Math.round(school.MaleStudentCount/school.MaleToiletCount)}} </span>
-</div>
+                                                        <span class="tag">       No of male toilets :{{school.MaleToiletCount}}</span>
+                                                    </div>
+                                                    <div ng-if="school.MaleToiletCount>0" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                        <div class="col-md-3">
+                                                            <span class="tag">    No of male students per toilet :{{Math.round(school.MaleStudentCount/school.MaleToiletCount)}} </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div ng-if="school.MidDayMeal != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <span class="tag">   Mid day meals not provided </span>
+                                            <div ng-if="school.MidDayMeal != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <span class="tag">   Mid day meals not provided </span>
 
 
-</div>
-                                        <div ng-if="school.ElectricityConnectionStatus != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <span class="tag">   Status of electricity connection : {{school.ElectricityConnectionStatus }} </span>
-</div>
-                                        <div ng-if="school.ClassroomCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <div class="col-md-4">
-                                                <span class="tag">  Total no. of classrooms for instructional purposes : {{school.ClassroomCount}} </span>
-</div>
-                                            <div ng-if="school.ClassroomCount != 0">
-                                            <div class="col-md-4">
-                                                <span class="tag">     Total no of classrooms that need repair : {{school.ClassroomRepairCount}} </span>
-</div></div>
-                                            <div ng-if="school.studentclassroomratio >-1" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                            </div>
+                                            <div ng-if="school.ElectricityConnectionStatus != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <span class="tag">   Status of electricity connection : {{school.ElectricityConnectionStatus }} </span>
+                                            </div>
+                                            <div ng-if="school.ClassroomCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <div class="col-md-4">
+                                                    <span class="tag">  Total no. of classrooms for instructional purposes : {{school.ClassroomCount}} </span>
+                                                </div>
+                                                <div ng-if="school.ClassroomCount != 0">
+                                                    <div class="col-md-4">
+                                                        <span class="tag">     Total no of classrooms that need repair : {{school.ClassroomRepairCount}} </span>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="school.studentclassroomratio >-1" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                    <div class="col-md-3">
+                                                        <span class="tag">  avg no. of students per classroom: {{school.studentclassroomratio}} </span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-if="school.ComputerAidedLearning != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <div class="col-md-4">
+                                                    <span class="tag">    School provides computer aided learning : {{school.ComputerAidedLearning}} </span>
+                                                </div>
                                                 <div class="col-md-3">
-                                                    <span class="tag">  avg no. of students per classroom: {{school.studentclassroomratio}} </span>
-
-</div>
+                                                    <span class="tag">   No of computers : {{school.ComputerCount}} </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div ng-if="school.ComputerAidedLearning != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <div class="col-md-4">
-                                                <span class="tag">    School provides computer aided learning : {{school.ComputerAidedLearning}} </span>
-</div>
-                                            <div class="col-md-3">
-                                                <span class="tag">   No of computers : {{school.ComputerCount}} </span>
-</div>
-                                        </div>
 
-                                        <div ng-if="school.RTECurYearStudentCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <div class="col-md-6">
-                                                <span class="tag">    No. of students given admission this year under RTE : {{school.RTECurYearStudentCount}} </span>
-</div>
-                                            <div class="col-md-6">
-
-                                                <span class="tag">  No. of students given admission prev year under RTE :{{school.RTEPrevYearStudentCount}} </span>
-</div>
-                                        </div>
-                                        <div ng-if="school.FemaleTeacherCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
-                                            <div class="col-md-3">
-                                                <span class="tag">  No. of female teachers : {{school.FemaleTeacherCount}} </span>
-</div>
-                                            <div class="col-md-3">
-                                                <span class="tag">    No. of male teachers :{{school.MaleTeacherCount}} </span>
-</div>
-                                            <div class="col-md-3">
-                                                <div ng-if="school.StudentTeacherRatio >-1">
-                                                    <span class="tag">  Student Teacher Ratio :{{school.StudentTeacherRatio}}</span>
+                                            <div ng-if="school.RTECurYearStudentCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <div class="col-md-6">
+                                                    <span class="tag">    No. of students given admission this year under RTE : {{school.RTECurYearStudentCount}} </span>
                                                 </div>
+                                                <div class="col-md-6">
+
+                                                    <span class="tag">  No. of students given admission prev year under RTE :{{school.RTEPrevYearStudentCount}} </span>
                                                 </div>
+                                            </div>
+                                            <div ng-if="school.FemaleTeacherCount != null" style="font-family:'Times New Roman', Times, serif;font-size:15px">
+                                                <div class="col-md-3">
+                                                    <span class="tag">  No. of female teachers : {{school.FemaleTeacherCount}} </span>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span class="tag">    No. of male teachers :{{school.MaleTeacherCount}} </span>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div ng-if="school.StudentTeacherRatio >-1">
+                                                        <span class="tag">  Student Teacher Ratio :{{school.StudentTeacherRatio}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                         </div>
+                                    </p>
+                                    <div class="row">
 
-
-                                    </div>
-                                </p>
-                                <div class="row" >
-                           
-                                    <div class="col-md-4" >
-                                        <!---<a class="btn btn-primary" href="#" ng-click="generate_pledge(school.SchoolCode)">I'd want to contribute <span class="glyphicon glyphicon-chevron-right"></span></a> -->
-                                        @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
+                                        <div class="col-md-4">
+                                            <!---<a class="btn btn-primary" href="#" ng-click="generate_pledge(school.SchoolCode)">I'd want to contribute <span class="glyphicon glyphicon-chevron-right"></span></a> -->
+                                            @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                                     <div ng-attr-id="{{school.SchoolCode}}">
-                                   
-                                <br /> <br/>
+                                <div ng-attr-id="{{school.SchoolCode}}">
+
+                                    <br /> <br />
                                 </div>
-                            <div class="row">
-                                <br />
+                                <div class="row">
+                                    <br />
+                                </div>
+
                             </div>
-                           
-                            </div>
-                       
-                        <br /><br />
+
+                            <br /><br />
                     </li>
-</div>
+                </div>
 
 
 
 
 
-             
+
                 <!--Live Feed-->
                 <div class="col-md-1"></div>
                 <div class="col-md-3">
                     <div class="col-md-11">
-                        <div class="row">
-                            <hr>
-                            <p style="color:whitesmoke; font-size:100px; text-align:center; font-family:'Monotype Corsiva';"><span class="glyphicon glyphicon-heart" style="font-size:65px; color:darkred"></span> Pledges</p>
-                            <hr />
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active" >
-                                  <div class="bgimg">
+                        <hr>
+                        <p style="color:whitesmoke; font-size:100px; text-align:center; font-family:'Monotype Corsiva';"><span class="glyphicon glyphicon-heart" style="font-size:65px; color:darkred"></span> Pledges</p>
+                        <hr />
+                       <br /><br />
+                 
+                        <li ng-repeat="scroll in current_scroll">
+                            <div class="row" style="background-image:url(data:image/jpeg;base64,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)">
+                                <p>
+                                   <h4 style="text-align:center">{{scroll.OrgName}} has pledged for {{scroll.SchoolName}}</h4> 
+                                   {{scroll.PledgeDetail}}
 
+                                    <hr /><hr />
+                                </p>
 
-                                  </div>
-                                       
-                                </div>
                             </div>
-                       
-                        </div>
+                            <br />
+                        </li>
                     </div>
                 </div>
+
             </div>
         </div>
-        <!--Pagination-->
-        <div class="container">
-            <div class="row text-center">
-                <ul class="col-lg-12">
-               
-                       
-                            <ul ng-if="no_of_pages > 5" class="pagination">
-                                <li><a href="#" ng-click="first_page()">First</a>
-                                            </li>
-                                <li>
-                                    <a href="#" ng-click="prev()">«</a>
-                                </li>
-                            </ul>
-                        
-                      
-                      
-                        <ul ng-repeat="n in current_page_slider" class="pagination">
-                            <li>
-                                <a href="#" ng-click="update_page(n)"> {{n}}</a>
-                            </li>
+    </div>
+    </div>
+    </div>
 
-                        </ul>
-                    <ul class="pagination">
+    </div>
+    </div>
+    <!--Pagination-->
+    <div class="container">
+        <div class="row text-center">
+            <ul class="col-lg-12">
 
 
-                       
-                        <ul ng-if="no_of_pages > 5" class="pagination">
-                           
-                            <li>
-                                <a href="#" ng-click="next()">»</a>
-                            </li>
-                            <li>
-                                <a href="#" ng-click="last_page()">Last</a>
-                            </li>
-                        </ul>
+                <ul ng-if="no_of_pages > 5" class="pagination">
+                    <li>
+                        <a href="#" ng-click="first_page()">First</a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="prev()">«</a>
+                    </li>
+                </ul>
+
+
+
+                <ul ng-repeat="n in current_page_slider" class="pagination">
+                    <li>
+                        <a href="#" ng-click="update_page(n)"> {{n}}</a>
+                    </li>
+
+                </ul>
+                <ul class="pagination">
+
+
+
+                    <ul ng-if="no_of_pages > 5" class="pagination">
+
+                        <li>
+                            <a href="#" ng-click="next()">»</a>
+                        </li>
+                        <li>
+                            <a href="#" ng-click="last_page()">Last</a>
+                        </li>
                     </ul>
-                </div>
-            </div>
+                </ul>
         </div>
     </div>
+    </div>
+    </div>
 
 
     </div>
 
 
 
-   <!---<div class="section-modal modal fade" id="facebook_login" tabindex="-1" role="dialog" aria-hidden="true" modal="showModal">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
+    <!---<div class="section-modal modal fade" id="facebook_login" tabindex="-1" role="dialog" aria-hidden="true" modal="showModal">
+         <div class="modal-content">
+             <div class="close-modal" data-dismiss="modal">
+                 <div class="lr">
+                     <div class="rl">
+                     </div>
+                 </div>
+             </div>
 
-            <div class="container">
-         
-          ////Html.Action("ExternalLoginsList","Account", new { ReturnUrl = ViewBag.ReturnUrl })
-    </div></div></div> -->
+             <div class="container">
 
-   <!--- <div class="modal-header">
-        <h3 class="modal-title">Login</h3>
+           ////Html.Action("ExternalLoginsList","Account", new { ReturnUrl = ViewBag.ReturnUrl })
+     </div></div></div> -->
+    <!--- <div class="modal-header">
+            <h3 class="modal-title">Login</h3>
+        </div>
+        <div class="modal-body">
+          //
+
     </div>
-    <div class="modal-body">
-      // 
-
-</div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-    </div> -->
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div> -->
 </body>
 
 </html>
